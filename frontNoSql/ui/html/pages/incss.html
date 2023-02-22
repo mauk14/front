@@ -1,0 +1,82 @@
+{{define "main"}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <title>E-book</title>
+        <link rel="stylesheet" type="text/css" href="../../static/css/css.css">
+    </head>
+
+    <body>
+        <header>
+            <div id="logo" >
+                <span>E-book</span>
+            </div>
+            <div id="about">
+            <a href="/" title="Main Info" onclick="slowScroll('#main')">Home</a>
+            <a href="/ebook/1" >Ebook</a>
+            <a href="/login" >Account</a>
+           
+            </div>
+        </header>
+        
+        <div class="arrivals">
+            <h1>Bestseller</h1>
+
+            {{if .Books}}
+            <div class="arrivals_box">
+                {{range .Books}}
+                <div class="arrivals_card">
+                    <div class="arrivals_image">
+                        <img src="../../static/image/thirdgirl.jpg">
+                    </div>
+                    <div class="arrivals_tag">
+                        <p>{{.Title}}</p>
+                        <div class="arrivals_icon">
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star"></i>
+                            <i class="fa-solid fa-star-half-stroke"></i>
+                        </div>
+                        <a href="/book/{{.ID}}" class="arrivals_btn">Learn More</a>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+            {{else}}
+            <p>There's nothing to see here... yet!</p>
+            {{end}}
+    
+        </div>
+
+        <footer>
+            <div id="contact" class="footer-contacts">
+                <h3>Feedback</h3>
+                <p>Advanced NoSql</p>
+                    <a href="https://www.instagram.com/erho_it.in/"  class="fa-brands fa-instagram"></a>
+    
+            </div>
+            <div class="footer-bottom">
+                <p>copyright &copy;2023 E-book. Designed by: Yerzhanat Toleubay, Aybek Nurbek, Nikita Maukebayev.</p>
+            </div>
+        </footer>
+    
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+
+         $(document).on("scroll", function (){
+           if($(window).scrollTop() === 0)
+           $("header").removeClass("fixed");
+           else
+           $("header").attr("class","fixed");
+         });
+
+        </script>
+    </body>
+</html>
+{{end}}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Simple CORS</h1>
+    <div id="output"></div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            fetch("http://localhost:4000/v1/books", {
+                headers: {
+                    Authorization: "Bearer N6NHJXNXEYVBZALDMYK3RTL4WY"
+                }
+            }).then(
+                    function (response) {
+                        response.text().then(function (text) {
+                        js = JSON.parse(text)
+                        document.getElementById("output").innerHTML = js.books[0].title; 
+                    });
+                },
+                function(err) {
+                    document.getElementById("output").innerHTML = err;  
+                }
+            );
+        });
+    </script>
+</body>
+</html>
